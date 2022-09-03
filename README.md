@@ -1,4 +1,4 @@
-# REST API Quotes in Polnish and English
+# REST API Quotes in Polish and English
 
 
 ### To-do: 
