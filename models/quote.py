@@ -4,7 +4,7 @@ from db import db
 class QuoteModel(db.Model):
     __tablename__ = 'quotes'
     id = db.Column(db.Integer, primary_key=True)
-    id_quote = db.Column(db.Integer)
+    id_quote = db.Column(db.Integer, unique=True)
     quote = db.Column(db.String(1000), unique=True)
     author = db.Column(db.String(300))
     origin = db.Column(db.String(500))
@@ -18,14 +18,6 @@ class QuoteModel(db.Model):
     @classmethod
     def find_by_id(cls, id_quote):
         return cls.query.filter_by(id_quote=id_quote).first()
-
-    @classmethod
-    def find_by_author(cls, author):
-        return cls.query.filter_by(author=author).first()
-
-    @classmethod
-    def find_by_quote(cls, quote):
-        return cls.query.filter_by(quote=quote).first()
 
     def delete_from_db(self):
         db.session.delete(self)
