@@ -1,5 +1,6 @@
 __pycache__
-resources/__pycache__/*
-models/__pycache__/*
+resources/__pycache__/
+models/__pycache__/
+venv/
 
 data.db

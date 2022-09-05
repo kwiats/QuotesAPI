@@ -1,7 +1,7 @@
 import os
 
-from flask import Flask, request
-from flask_restful import Resource, Api
+from flask import Flask
+from flask_restful import Api
 from db import db
 
 from resources.quote import Quote, QuoteList
@@ -15,11 +15,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "123456"
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
+
 api = Api(app)
 
 api.add_resource(Quote, '/quote/<int:id_quote>')
 api.add_resource(QuoteList, '/quotes')
-api.add_resource(Author, '/author/<string:name>')
+api.add_resource(Author, '/author/<string:author>')
 api.add_resource(AuthorList, '/authors')
 
 

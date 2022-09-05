@@ -3,17 +3,19 @@ from db import db
 
 class AuthorModel(db.Model):
     __tablename__ = 'authors'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    authorId = db.Column(db.Integer, unique=True)
 
-    def __init__(self, name, authorId):
-        self.name = name
-        self.auhtorId = authorId
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.Column(db.String(50))
+
+    quotes = db.relationship('QuoteModel', back_populates='author', lazy='dynamic')
+
+
+    def __init__(self, author):
+        self.author = author
 
     @classmethod
-    def find_by_id(cls, authorId):
-        return cls.query.filter_by(authorId=authorId).first()
+    def find_by_author(cls, author):
+        return cls.query.filter_by(author=author).first()
 
     def delete_from_db(self):
         db.session.delete(self)
@@ -24,5 +26,4 @@ class AuthorModel(db.Model):
         db.session.commit()
 
     def json(self):
-        return {'author': self.name,
-                'authorId': self.authorId}
+        return {'author': self.author, 'quotes': [quote.json() for quote in self.quotes.all()]}
