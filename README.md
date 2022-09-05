@@ -23,6 +23,7 @@ and
  - blacklist words
  - oauth
  - homepage
+ - random quote generator
 
 
 ### Enjoy! <3
