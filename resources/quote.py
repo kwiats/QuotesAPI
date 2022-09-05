@@ -7,9 +7,9 @@ class Quote(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('quote', type=str, required=True,
                         help="This field cannot be left blank.")
-    parser.add_argument('author', type=str, required=True,
-                        help="This field cannot be left blank.")
     parser.add_argument('origin', type=str, required=True,
+                        help="This field cannot be left blank.")
+    parser.add_argument('authorId', type=int, required=True,
                         help="This field cannot be left blank.")
 
     def get(self, id_quote):
@@ -20,12 +20,12 @@ class Quote(Resource):
 
     def post(self, id_quote):
         if QuoteModel.find_by_id(id_quote):
-            return {'message': "An author with id '{}' already exists.".format(id_quote)}, 400
+            return {'message': "An quote with id '{}' already exists.".format(id_quote)}, 400
 
         data = Quote.parser.parse_args()
 
         quote = QuoteModel(
-            id_quote, data['quote'], data['author'], data['origin'])
+            id_quote, data['quote'], data['origin'], data['authorId'])
         try:
             quote.save_to_db()
         except:
