@@ -1,5 +1,3 @@
-# REST API Quotes in Polish and English
-
 # Random Quote
 Application allow user to add favorite quote, author and origin of quote, then user can generate random quote. 
 
@@ -24,6 +22,7 @@ and
 ### TO DO
  - blacklist words
  - oauth
+ - homepage
 
 
 ### Enjoy! <3
