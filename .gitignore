@@ -2,5 +2,7 @@ venv/*
 __pycachce__/*
 models/__pycachce__/*
 resoruces/__pycachce__/*
+config/__pycachce__/*
+templates/*
 
 data.db
