@@ -20,6 +20,7 @@ and
     $pip install flask-restful
 
 ### TO DO
+ - apidocs*
  - blacklist words
  - oauth
  - homepage
