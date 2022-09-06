@@ -13,7 +13,7 @@ class Author(Resource):
 
     def post(self, author):
         if AuthorModel.find_by_author(author):
-            return {'message': "An author with id '{}' already exists.".format(author)}, 400
+            return {'message': "An author with name '{}' already exists.".format(author)}, 400
 
         author = AuthorModel(author)
         try:
