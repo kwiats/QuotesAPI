@@ -7,6 +7,7 @@ from db import db
 
 from resources.quote import Quote, QuoteList
 from resources.author import Author, AuthorList
+from config.swagger import  template, swagger_config
 
 # Init app
 app = Flask(__name__)
@@ -21,13 +22,6 @@ app.config['SWAGGER'] = {
 }
 app.secret_key = "123456"
 
-
-swagger = Swagger(app, template_file='static/Swagger.json', parse=True)
-
-def create_tables():
-    db.create_all()
-
-
 api = Api(app)
 
 
@@ -35,6 +29,8 @@ api.add_resource(Quote, '/quote/<int:id_quote>')
 api.add_resource(QuoteList, '/quotes')
 api.add_resource(Author, '/author/<string:author>')
 api.add_resource(AuthorList, '/authors')
+
+swagger = Swagger(app, config = swagger_config, template=template, parse=True)
 
 
 if __name__ == '__main__':

@@ -1,10 +1,10 @@
 from flask_restful import Resource, reqparse
-
+from flasgger import swag_from
 from models.author import AuthorModel
 
 
 class Author(Resource):
-
+    #@swag_from('./docs/authorget.yaml')
     def get(self, author):
         author = AuthorModel.find_by_author(author)
         if author:
@@ -23,11 +23,12 @@ class Author(Resource):
 
         return author.json(), 201
 
-    def delete(self):
-        pass
-
-    def put(self):
-        pass
+    def delete(self, author):
+        author = AuthorModel.find_by_author(author)
+        if author:
+            author.delete_from_db()
+        
+        return {'message': 'Author has been deleted.'}, 404
 
 class AuthorList(Resource):
     def get(self):
