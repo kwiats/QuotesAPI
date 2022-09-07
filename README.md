@@ -1,5 +1,3 @@
-# REST API Quotes in Polish and English
-
 # Random Quote
 Application allow user to add favorite quote, author and origin of quote, then user can generate random quote. 
 
@@ -22,8 +20,11 @@ and
     $pip install flask-restful
 
 ### TO DO
+ - apidocs*
  - blacklist words
  - oauth
+ - homepage
+ - random quote generator
 
 
 ### Enjoy! <3
