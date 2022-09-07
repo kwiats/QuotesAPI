@@ -19,10 +19,19 @@ and
 
     $pip install flask-restful
 
+and
+
+    $pip install flask-jwt-extended
+    
+### Authorization
+
+Username: admin
+Password: admin1
+
 ### TO DO
- - apidocs*
+ - apidocs 
  - blacklist words
- - oauth
+ - ~~authorization~~
  - homepage
  - random quote generator
 
