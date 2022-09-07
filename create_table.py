@@ -13,13 +13,22 @@ authorId INTEGER,
 FOREIGN KEY(authorId) REFERENCES authors(id))
 """
 
-
 cursor.execute(CREATE_TABLE)
 
 CREATE_TABLE = """
 CREATE TABLE IF NOT EXISTS authors (
 id INTEGER PRIMARY KEY,
 author TEXT)
+"""
+
+cursor.execute(CREATE_TABLE)
+
+
+CREATE_TABLE = """
+CREATE TABLE IF NOT EXISTS users (
+id INTEGER PRIMARY KEY,
+username TEXT,
+password TEXT)
 """
 
 

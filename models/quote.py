@@ -22,6 +22,10 @@ class QuoteModel(db.Model):
     def find_by_id(cls, id_quote):
         return cls.query.filter_by(id_quote=id_quote).first()
 
+    @classmethod
+    def find_all(cls):
+        return cls.query.all()
+        
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
@@ -31,6 +35,9 @@ class QuoteModel(db.Model):
         db.session.commit()
 
     def json(self):
-        return {'quote': self.quote,
-                'origin': self.origin,
-                'authorId': self.authorId}
+        return {
+            'id': self.id_quote,
+            'quote': self.quote,
+            'origin': self.origin,
+            'authorId': self.authorId
+        }

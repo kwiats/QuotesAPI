@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 from flasgger import swag_from
+from flask_jwt_extended import jwt_required
 from models.author import AuthorModel
 
 
@@ -23,6 +24,7 @@ class Author(Resource):
 
         return author.json(), 201
 
+    @jwt_required()
     def delete(self, author):
         author = AuthorModel.find_by_author(author)
         if author:
@@ -32,4 +34,4 @@ class Author(Resource):
 
 class AuthorList(Resource):
     def get(self):
-        return {'Authors': list(map(lambda author: author.json(), AuthorModel.query.all()))}
+        return {'Authors': [author.json() for author in AuthorModel.find_all()]}

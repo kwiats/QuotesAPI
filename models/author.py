@@ -15,6 +15,11 @@ class AuthorModel(db.Model):
     def find_by_author(cls, author):
         return cls.query.filter_by(author=author).first()
 
+    @classmethod
+    def find_all(cls):
+        return cls.query.all()
+
+
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
@@ -24,4 +29,8 @@ class AuthorModel(db.Model):
         db.session.commit()
 
     def json(self):
-        return {'author':self.author, 'quotes': [quote.json() for quote in self.quotes.all()]}
+        return {
+            'id':self.id,
+            'author':self.author,
+            'quotes': [quote.json() for quote in self.quotes.all()]
+        }

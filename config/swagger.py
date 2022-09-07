@@ -2,11 +2,11 @@ template = {
     "swagger": "2.0",
     "info": {
         "title": "QuoteAPI",
-        "description": "API for quotes",
+        "description": "Api documantation for quote api. ",
         "contact": {
             "responsibleOrganization": "",
             "responsibleDeveloper": "",
-            "email": "kontakt.pawelkwiatkowski@gmail.c",
+            "email": "kontakt.pawelkwiatkowski@gmail.com",
             "url": "www.twitter.com/xkwiatuh",
         },
         "termsOfService": "www.twitter.com/xkwiatuh",
@@ -33,5 +33,5 @@ swagger_config = {
     ],
     "static_url_path": "/flasgger_static",
     "swagger_ui": True,
-    "specs_route": "/"
+    "specs_route": "/docs/"
 }

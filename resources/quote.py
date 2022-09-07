@@ -1,6 +1,7 @@
 from ast import parse
 from flask_restful import Resource, reqparse
 from flask import render_template, make_response
+from flask_jwt_extended import jwt_required
 
 from models.quote import QuoteModel
 
@@ -35,13 +36,15 @@ class Quote(Resource):
 
         return quote.json(), 201
 
+    @jwt_required()
     def delete(self, id_quote):
         quote = QuoteModel.find_by_id(id_quote)
         if quote:
             quote.delete_from_db()
-
+ 
         return {'message': 'Quote ID:{} has been deleted.'.format(id_quote)}, 404
 
+    @jwt_required()
     def put(self, id_quote):
         data = Quote.parser.parse_args()
 
@@ -60,4 +63,4 @@ class Quote(Resource):
 
 class QuoteList(Resource):
     def get(self):
-        return {'quotes': list(map(lambda quote: quote.json(), QuoteModel.query.all()))}
+        return {'quotes': [quote.json() for quote in QuoteModel.find_all()]}
