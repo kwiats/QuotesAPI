@@ -22,11 +22,9 @@ and
 and
 
     $pip install flask-jwt-extended
-
-
-
     
 ## Authorization
+
 Username: `admin`
 Password: `admin1`
 
