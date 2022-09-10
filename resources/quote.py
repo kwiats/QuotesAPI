@@ -1,7 +1,8 @@
 from ast import parse
 from flask_restful import Resource, reqparse
 from flask import render_template, make_response
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt
+
 
 from models.quote import QuoteModel
 
@@ -38,6 +39,10 @@ class Quote(Resource):
 
     @jwt_required()
     def delete(self, id_quote):
+        claims = get_jwt()
+        if not claims['is_admin']:
+            return {'message':'You need admin permissions.'}, 401
+            
         quote = QuoteModel.find_by_id(id_quote)
         if quote:
             quote.delete_from_db()
