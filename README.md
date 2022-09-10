@@ -1,7 +1,7 @@
 # Random Quote
-Application allow user to add favorite quote, author and origin of quote, then user can generate random quote. 
+Application allow user to add favorite quote, author and origin of quote, then user can generate random quote[to-do]. 
 
-### Installing
+## Installing
 
 You should make clone of repository on your local machine. You can use this command in your terminal:
 
@@ -19,12 +19,23 @@ and
 
     $pip install flask-restful
 
-### TO DO
- - apidocs*
+and
+
+    $pip install flask-jwt-extended
+
+
+
+    
+## Authorization
+Username: `admin`
+Password: `admin1`
+
+## TO DO
+ - apidocs 
  - blacklist words
- - oauth
+ - ~~authorization~~
  - homepage
  - random quote generator
 
 
-### Enjoy! <3
+### Enjoy! 
