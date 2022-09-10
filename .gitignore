@@ -1,8 +1,8 @@
-venv/*
-__pycachce__/*
-models/__pycachce__/*
-resoruces/__pycachce__/*
-config/__pycachce__/*
-templates/*
+venv/
+__pycache__/
+models/__pycache__/
+resoruces/__pycache__/
+config/__pycache__/
+templates/
 
 data.db
