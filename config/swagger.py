@@ -1,23 +1,28 @@
 template = {
-    "swagger": "2.0",
-    "info": {
-        "title": "QuoteAPI",
-        "description": "Api documantation for quote api. ",
-        "contact": {
-            "responsibleOrganization": "",
-            "responsibleDeveloper": "",
-            "email": "kontakt.pawelkwiatkowski@gmail.com",
-            "url": "www.twitter.com/xkwiatuh",
-        },
-        "termsOfService": "www.twitter.com/xkwiatuh",
-        "version": "BETA 1.0"
-    },
-    "basePath": "/api/v1",  # base bash for blueprint registration
-    "schemes": [
-        "http",
-        "https"
-    ]
-    
+  "swagger": "2.0",
+  "info": {
+    "title": "QuoteAPI",
+    "description": "Documentation for API appliaction.",
+    "version": "0.1.1",
+    "contact": {
+      "name": "kwiats",
+      "url": "https://github.com/kwiats",
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+
 }
 
 swagger_config = {
