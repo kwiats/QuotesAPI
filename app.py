@@ -2,15 +2,14 @@ import os
 
 from flask import Flask, request, render_template
 from flask_restful import Resource, Api
-from flasgger import Swagger
 from flask_jwt_extended import JWTManager
+from flask_restx import Resource, Api
 
 from db import db
 
 from resources.user import User, UserRegister, UserLogin
 from resources.quote import Quote, QuoteList
 from resources.author import Author, AuthorList
-from config.swagger import  template, swagger_config
 
 # Init app
 app = Flask(__name__)
@@ -19,10 +18,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['SWAGGER'] = {
-    'title': 'QuoteAPI',
-    'uiversion': 3
-}
+
 
 app.secret_key = 'pawel'
 
@@ -48,9 +44,6 @@ def add_claims_to_jwt(identity):
     if identity == 1:
         return {'is_admin': True}
     return {'is_admin': False}
-
-
-swagger = Swagger(app, config = swagger_config, template=template, parse=True)
 
 
 if __name__ == '__main__':

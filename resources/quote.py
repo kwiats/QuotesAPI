@@ -15,7 +15,6 @@ class Quote(Resource):
                         help="This field cannot be left blank.")
     parser.add_argument('authorId', type=int, required=True,
                         help="This field cannot be left blank.")
-
     def get(self, id_quote):
         quote = QuoteModel.find_by_id(id_quote)
         if quote:
@@ -67,5 +66,6 @@ class Quote(Resource):
             
 
 class QuoteList(Resource):
+
     def get(self):
         return {'quotes': [quote.json() for quote in QuoteModel.find_all()]}

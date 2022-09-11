@@ -3,6 +3,7 @@ from flask_jwt_extended import create_access_token, create_refresh_token
 
 from models.user import UserModel
 import hmac 
+
 _user_parser = reqparse.RequestParser()
 
 _user_parser.add_argument('username', type=str, required=True,
@@ -23,14 +24,14 @@ class UserRegister(Resource):
         return {"message": "User created successfully."}, 201
 
 class User(Resource):
-    @classmethod
-    def get(cls, user_id):
+    
+    def get(self, user_id):
         user = UserModel.find_by_id(user_id)
         if not user:
             return {'message': 'User not found.'}, 404
         return user.json()
-    @classmethod
-    def delete(cls, user_id):
+
+    def delete(self, user_id):
         user = UserModel.find_by_id(user_id)
         if not user:
             return {'message': 'User not found.'}, 404
@@ -38,8 +39,7 @@ class User(Resource):
         return {'message':'User deleted.'}
 
 class UserLogin(Resource):
-    @classmethod
-    def post(cls):
+    def post(self):
         data = _user_parser.parse_args()
 
         user = UserModel.find_by_username(data['username'])
